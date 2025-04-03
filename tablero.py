@@ -1,12 +1,22 @@
 
-columnas =  8
-filas = 8
+tablero = [["-" for _ in range(9)] for _ in range(9)]
+
+for i, letra in enumerate("ABCDEFGH"):
+    tablero[i][8] = str(8 - i)
+    tablero[8][i] = letra  
 
 
-tablero = [["-" for _ in range(columnas)] for _ in range(filas)]
+reinas = []
+
+reinas.append(input("¿En que posición quiere poner la primera reina? (Ej: A7, C2...) ").upper())
+
+
+
+
 
 print(tablero)
 
+print(reinas)
+
 for fila in tablero:
     print(" ".join(fila))
-print()
