@@ -1,3 +1,4 @@
+import os
 
 tablero = [["-" for _ in range(9)] for _ in range(9)]
 
@@ -8,10 +9,18 @@ for i, letra in enumerate("ABCDEFGH"):
 
 reinas = []
 
-reinas.append(input("¿En que posición quiere poner la primera reina? (Ej: A7, C2...) ").upper())
+reinas.append(input("\033[32m¿En que posición quiere poner la primera reina? (Ej: A7, C2...) \033[m").upper())
+
+for i, letra in enumerate("ABCDEFGH"):
+    if reinas[0][0] == letra:
+        tablero[8 - int(reinas[0][1])][i] = "\033[31mX\033[m"
 
 
-def colocar_reina(tablero, reinas):
+#os.system('cls' if os.name == 'nt' else 'clear')
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+#def colocar_reina(tablero, reinas):
     #código
 
 
