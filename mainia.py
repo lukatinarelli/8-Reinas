@@ -1,5 +1,6 @@
 import os
 
+QUEEN_MARKER = "\033[31mX\033[m"
 tablero = [["-" for _ in range(9)] for _ in range(9)]
 
 for i, letra in enumerate("ABCDEFGH"):
@@ -13,7 +14,7 @@ reinas.append(input("\033[32m¿En que posición quiere poner la primera reina? (
 
 for i, letra in enumerate("ABCDEFGH"):
     if reinas[0][0] == letra:
-        tablero[8 - int(reinas[0][1])][i] = "\033[31mX\033[m"
+        tablero[8 - int(reinas[0][1])][i] = QUEEN_MARKER
 
 
 #os.system('cls' if os.name == 'nt' else 'clear')
@@ -25,23 +26,31 @@ def colocar_reina(tablero, reinas):
         for columna in range(8):
             if tablero[fila][columna] == "-":
                 # Comprobar si puede colocar la reina
-                if puede_colocar_reina(tablero, fila, columna, reinas):
-                    tablero[fila][columna] = "\033[31mX\033[m"
+                if puede_colocar_reina(tablero, fila, columna):
+                    tablero[fila][columna] = QUEEN_MARKER
                     reinas.append((fila, columna))
-                    return True
-    return False
+                    # Intentar colocar la siguiente reina
+                    if colocar_reina(tablero, reinas):
+                        return True
+                    # Si no se puede colocar la siguiente reina, quitar la actual
+                    tablero[fila][columna] = "-"
+                    reinas.pop()
+                    
+    # Si no se pudo colocar todas las reinas, devolver False
+    return len(reinas) == 8
 
-def puede_colocar_reina(tablero, fila, columna, reinas):
+def puede_colocar_reina(tablero, fila, columna):
     # Comprobar filas y columnas
     for i in range(8):
-        if tablero[fila][i] == "\033[31mX\033[m" or tablero[i][columna] == "\033[31mX\033[m":
+        if tablero[fila][i] == QUEEN_MARKER or tablero[i][columna] == QUEEN_MARKER:
             return False
 
     # Comprobar diagonales
-    for i in range(8):
-        for j in range(8):
-            if abs(fila - i) == abs(columna - j) and tablero[i][j] == "\033[31mX\033[m":
-                return False
+    for offset in range(-7, 8):
+        if 0 <= fila + offset < 8 and 0 <= columna + offset < 8 and tablero[fila + offset][columna + offset] == QUEEN_MARKER:
+            return False
+        if 0 <= fila + offset < 8 and 0 <= columna - offset < 8 and tablero[fila + offset][columna - offset] == QUEEN_MARKER:
+            return False
 
     return True
 
