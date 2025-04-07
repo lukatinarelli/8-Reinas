@@ -30,6 +30,8 @@ Forma parte del currículo del **Ciclo Formativo de Grado Superior en Administra
 1. Ejecutar el script:
 ```bash
 python ocho_reinas.py
+```
+
 2. Introducir la posición inicial de la reina (ej. A1, H8, etc.)
 3. El programa mostrará la solución completa
 
