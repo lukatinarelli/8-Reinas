@@ -14,52 +14,59 @@ reinas.append(input("\033[32m¿En que posición quiere poner la primera reina? (
 for i, letra in enumerate("ABCDEFGH"):
     if reinas[0][0] == letra:
         tablero[8 - int(reinas[0][1])][i] = "\033[31mX\033[m"
+        reinas.append((8 - int(reinas[0][1]), i))
+        reinas.pop(0)
 
 
 #os.system('cls' if os.name == 'nt' else 'clear')
 
+for i in tablero:
+    print(" ".join(i))
+
 #-----------------------------------------------------------------------------------------------------------------------
 
 def colocar_reina(tablero, reinas):
-    for fila in range(8):
-        for columna in range(8):
-            if tablero[fila][columna] == "-":
-                # Comprobar si puede colocar la reina
-                if puede_colocar_reina(tablero, fila, columna, reinas):
+    if len(reinas) < 8:
+        for fila in range(8):
+            for columna in range(8):
+                if tablero[fila][columna] == "-" and puede_colocar_reina(tablero, fila, columna, reinas):
                     tablero[fila][columna] = "\033[31mX\033[m"
                     reinas.append((fila, columna))
-                    return True
-    return False
+
+                    for i in tablero:
+                        print(" ".join(i))
+                    print("----------------------------------------------------")
+                        
+                    if colocar_reina(tablero, reinas):
+                        return True
+                
+                    else:
+                        reinas.pop()
+                        tablero[fila][columna] = "-"
+    else:
+        return True    
 
 def puede_colocar_reina(tablero, fila, columna, reinas):
-    # Comprobar filas y columnas
-    for i in range(8):
-        if tablero[fila][i] == "\033[31mX\033[m" or tablero[i][columna] == "\033[31mX\033[m":
+    # Comprobar fila
+    if "\x1b[31mX\x1b[m" in tablero[fila]:
+        return False
+    
+    # Comprobar columna
+    for i in reinas:
+        if i[1] == columna:
             return False
-
-    # Comprobar diagonales
-    for i in range(8):
-        for j in range(8):
-            if abs(fila - i) == abs(columna - j) and tablero[i][j] == "\033[31mX\033[m":
-                return False
-
+        
+    # Comprobar diagonal
+    for i in reinas:
+        if (i[1] - columna == i[0] - fila) or (i[1] - columna == -(i[0] - fila)):
+            return False
+    
     return True
 
 #-----------------------------------------------------------------------------------------------------------------------
-
-#   for filas in ...
-#   for columnas in ...
-#       if puede haber reina
-#           colocar reina
-#       colocar_reina()
-#       if colocar_reina() no coloca
-#           quitar la ultima reina
 
 colocar_reina(tablero, reinas)
 
 print(tablero)
 
 print(reinas)
-
-for fila in tablero:
-    print(" ".join(fila))
