@@ -36,12 +36,14 @@ python ocho_reinas.py
 3. El programa mostrará la solución completa
 
 ## Estructura del Código 🧱
+```bash
 # Tablero 9x9 (8x8 + bordes para coordenadas)
 tablero = [["-" for _ in range(9)] for _ in range(9)]  
 
 # Función principal recursiva
 def colocar_reina(tablero, reinas):
     # Lógica de backtracking...
+```
 
 ## Autor ✍️
 Luka Ramon Tinarelli - Estudiante de ASIR
