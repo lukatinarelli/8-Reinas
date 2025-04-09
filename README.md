@@ -29,7 +29,7 @@ Forma parte del currículo del **Ciclo Formativo de Grado Superior en Administra
 ## Uso 🖥️
 1. Ejecutar el script:
 ```bash
-python ocho_reinas.py
+python main.py
 ```
 
 2. Introducir la posición inicial de la reina (ej. A1, H8, etc.)
@@ -43,6 +43,10 @@ tablero = [["-" for _ in range(9)] for _ in range(9)]
 # Función principal recursiva
 def colocar_reina(tablero, reinas):
     # Lógica de backtracking...
+
+# Función secundaria
+def comprobar_reina(tablero, fila, columna, reinas):
+				# Comprobar si alguna reina del tablero le puede atacar
 ```
 
 ## Autor ✍️
