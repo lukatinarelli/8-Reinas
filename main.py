@@ -1,4 +1,4 @@
-import os
+import os, time
 
 tablero = [["-" for _ in range(9)] for _ in range(9)]
 
