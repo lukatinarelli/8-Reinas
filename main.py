@@ -18,7 +18,7 @@ for i, letra in enumerate("ABCDEFGH"):
         reinas.pop(0)
 
 
-#os.system('cls' if os.name == 'nt' else 'clear')
+os.system('cls' if os.name == 'nt' else 'clear')
 
 for i in tablero:
     print(" ".join(i))
@@ -33,9 +33,10 @@ def colocar_reina(tablero, reinas):
                     tablero[fila][columna] = "\033[31mX\033[m"
                     reinas.append((fila, columna))
 
+                    os.system('cls' if os.name == 'nt' else 'clear')
                     for i in tablero:
                         print(" ".join(i))
-                    print("----------------------------------------------------")
+                    time.sleep(0.5)
                         
                     if colocar_reina(tablero, reinas):
                         return True
@@ -66,7 +67,3 @@ def puede_colocar_reina(tablero, fila, columna, reinas):
 #-----------------------------------------------------------------------------------------------------------------------
 
 colocar_reina(tablero, reinas)
-
-print(tablero)
-
-print(reinas)
