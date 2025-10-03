@@ -36,7 +36,7 @@ def colocar_reina(tablero, reinas):
                     os.system('cls' if os.name == 'nt' else 'clear')
                     for i in tablero:
                         print(" ".join(i))
-                    time.sleep(0.5)
+                    time.sleep(0.5) # Velocidad programa
                         
                     if colocar_reina(tablero, reinas):
                         return True
