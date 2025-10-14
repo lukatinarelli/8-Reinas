@@ -28,15 +28,32 @@ Forma parte del currículo del **Ciclo Formativo de Grado Superior en Administra
 
 ## Uso 🖥️
 1. Ejecutar el script:
-```bash
-python main.py
-```
-
+   ```bash
+   python main.py
+   ```
 2. Introducir la posición inicial de la reina (ej. A1, H8, etc.)
 3. El programa mostrará la solución completa
 
+### Ejemplo
+```
+Introduce la posición inicial de la reina (ejemplo: A1):
+Solución encontrada:
+
+    A B C D E F G H
+  +-----------------+
+1 |♛ - - - - - - - |
+2 |- - - - - ♛ - - |
+3 |- - - - - - - ♛ |
+4 |- ♛ - - - - - - |
+5 |- - - ♛ - - - - |
+6 |- - - - - - ♛ - |
+7 |- - ♛ - - - - - |
+8 |- - - - ♛ - - - |
+  +-----------------+
+```
+
 ## Estructura del Código 🧱
-```bash
+```python
 # Tablero 9x9 (8x8 + bordes para coordenadas)
 tablero = [["-" for _ in range(9)] for _ in range(9)]  
 
@@ -46,12 +63,18 @@ def colocar_reina(tablero, reinas):
 
 # Función secundaria
 def comprobar_reina(tablero, fila, columna, reinas):
-				# Comprobar si alguna reina del tablero le puede atacar
+    # Comprobar si alguna reina del tablero le puede atacar
 ```
 
-## Autor ✍️
-Luka Ramon Tinarelli - Estudiante de ASIR
+## Recursos útiles 🔗
+- [Problema de las 8 reinas en Wikipedia](https://es.wikipedia.org/wiki/Problema_de_las_ocho_reinas)
+- [Documentación oficial de Python](https://docs.python.org/es/3/)
 
+## Contribuir 🤝
+Las sugerencias y mejoras son bienvenidas. Si quieres aportar, puedes abrir un issue o enviar un pull request.
+
+## Autor ✍️
+Luka Ramon Tinarelli - Técnico de ASIR en prácticas, apasionado por la programación y la automatización.
 
 ## Licencia 📄
-Este proyecto está bajo la licencia MIT.
+Este proyecto está bajo la licencia [CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](LICENSE).
