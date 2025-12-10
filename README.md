@@ -13,7 +13,7 @@
 
    <img src="https://img.shields.io/badge/Algorithm-Backtracking-orange?style=for-the-badge">
 
-   <a href="https://github.com/lukatinarelli/8-Queens-Backtracking/blob/master/LICENSE">
+   <a href="https://github.com/lukatinarelli/8-Queens-Backtracking/blob/main/LICENSE">
       <img src="https://img.shields.io/badge/License-CC0-lightgrey?style=for-the-badge"></a>
 </p>
 
