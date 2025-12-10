@@ -1,6 +1,22 @@
-# 8 Reinas con Posición Inicial ♛
+<p align="center">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Eight-queens-animation.gif/220px-Eight-queens-animation.gif" 
+      alt="8 queens animation"/>
+</p>
 
-![Chess board with queens](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Eight-queens-animation.gif/220px-Eight-queens-animation.gif)
+<h1 align="center">♛ 8 Queens Solver — Backtracking Edition</h1>
+
+<p align="center">
+   <img src="https://img.shields.io/badge/STATUS-COMPLETED-green?style=for-the-badge">
+
+   <a href="https://docs.python.org/3/">
+      <img src="https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python"></a>
+
+   <img src="https://img.shields.io/badge/Algorithm-Backtracking-orange?style=for-the-badge">
+
+   <a href="https://github.com/lukatinarelli/8-Queens-Backtracking/blob/master/LICENSE">
+      <img src="https://img.shields.io/badge/License-CC0-lightgrey?style=for-the-badge"></a>
+</p>
+
 
 ## Descripción 📜
 Este proyecto implementa una solución al clásico problema de las 8 reinas en un tablero de ajedrez, con la particularidad de que:
