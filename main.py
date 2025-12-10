@@ -1,69 +1,89 @@
-import os, time
+import os
+import time
 
-tablero = [["-" for _ in range(9)] for _ in range(9)]
+# -------------------------------
+# Board setup
+# -------------------------------
+board = [["-" for _ in range(9)] for _ in range(9)]
 
-for i, letra in enumerate("ABCDEFGH"):
-    tablero[i][8] = str(8 - i)
-    tablero[8][i] = letra  
+# Add row numbers and column letters
+for i, letter in enumerate("ABCDEFGH"):
+    board[i][8] = str(8 - i)
+    board[8][i] = letter
 
+# -------------------------------
+# Queen positions
+# -------------------------------
+queens = []
 
-reinas = []
+# Ask for initial queen position
+initial_pos = input("\033[32mEnter the initial position of the first queen (e.g., A7, C2...): \033[m").upper()
+queens.append(initial_pos)
 
-reinas.append(input("\033[32m¿En que posición quiere poner la primera reina? (Ej: A7, C2...) \033[m").upper())
+# Place the first queen on the board
+for i, letter in enumerate("ABCDEFGH"):
+    if queens[0][0] == letter:
+        row = 8 - int(queens[0][1])
+        col = i
+        board[row][col] = "\033[31mX\033[m"
+        queens.append((row, col))
+        queens.pop(0)
 
-for i, letra in enumerate("ABCDEFGH"):
-    if reinas[0][0] == letra:
-        tablero[8 - int(reinas[0][1])][i] = "\033[31mX\033[m"
-        reinas.append((8 - int(reinas[0][1]), i))
-        reinas.pop(0)
-
-
+# Clear screen and print initial board
 os.system('cls' if os.name == 'nt' else 'clear')
+for row in board:
+    print(" ".join(row))
 
-for i in tablero:
-    print(" ".join(i))
 
-#-----------------------------------------------------------------------------------------------------------------------
+# -------------------------------
+# Functions
+# -------------------------------
+def can_place_queen(board, row, col, queens):
+    """Check if a queen can be safely placed at (row, col)."""
 
-def colocar_reina(tablero, reinas):
-    if len(reinas) < 8:
-        for fila in range(8):
-            for columna in range(8):
-                if tablero[fila][columna] == "-" and puede_colocar_reina(tablero, fila, columna, reinas):
-                    tablero[fila][columna] = "\033[31mX\033[m"
-                    reinas.append((fila, columna))
-
-                    os.system('cls' if os.name == 'nt' else 'clear')
-                    for i in tablero:
-                        print(" ".join(i))
-                    time.sleep(0.5) # Velocidad programa
-                        
-                    if colocar_reina(tablero, reinas):
-                        return True
-                
-                    else:
-                        reinas.pop()
-                        tablero[fila][columna] = "-"
-    else:
-        return True    
-
-def puede_colocar_reina(tablero, fila, columna, reinas):
-    # Comprobar fila
-    if "\x1b[31mX\x1b[m" in tablero[fila]:
+    # Check row
+    if "\033[31mX\033[m" in board[row]:
         return False
-    
-    # Comprobar columna
-    for i in reinas:
-        if i[1] == columna:
+
+    # Check column
+    for q in queens:
+        if q[1] == col:
             return False
-        
-    # Comprobar diagonal
-    for i in reinas:
-        if (i[1] - columna == i[0] - fila) or (i[1] - columna == -(i[0] - fila)):
+
+    # Check diagonals
+    for q in queens:
+        if abs(q[0] - row) == abs(q[1] - col):
             return False
-    
+
     return True
 
-#-----------------------------------------------------------------------------------------------------------------------
 
-colocar_reina(tablero, reinas)
+def place_queens(board, queens):
+    """Recursive backtracking function to place all queens."""
+    if len(queens) < 8:
+        for row in range(8):
+            for col in range(8):
+                if board[row][col] == "-" and can_place_queen(board, row, col, queens):
+                    board[row][col] = "\033[31mX\033[m"
+                    queens.append((row, col))
+
+                    # Clear screen and display current board
+                    os.system('cls' if os.name == 'nt' else 'clear')
+                    for r in board:
+                        print(" ".join(r))
+                    time.sleep(0.5)  # Adjust speed
+
+                    if place_queens(board, queens):
+                        return True
+
+                    # Backtrack
+                    queens.pop()
+                    board[row][col] = "-"
+    else:
+        return True
+
+
+# -------------------------------
+# Start algorithm
+# -------------------------------
+place_queens(board, queens)
