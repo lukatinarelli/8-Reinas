@@ -17,46 +17,73 @@
       <img src="https://img.shields.io/badge/License-CC0-lightgrey?style=for-the-badge"></a>
 </p>
 
+---
 
-## Descripción 📜
-Este proyecto implementa una solución al clásico problema de las 8 reinas en un tablero de ajedrez, con la particularidad de que:
-- El usuario especifica la posición inicial de una reina
-- El programa coloca automáticamente las otras 7 reinas restantes
-- Garantiza que ninguna reina pueda atacarse entre sí
+## 📜 Project Description
 
-## Contexto Académico 🎓
-Ejercicio propuesto en el módulo:
-- **Implantación de Sistemas Operativos** 
-- **Administración de Sistemas Operativos**
+This project implements a solver for the classic **8 Queens puzzle**, using a **backtracking algorithm** to place eight queens on a chessboard so that none of them can attack each other.
 
-Forma parte del currículo del **Ciclo Formativo de Grado Superior en Administración de Sistemas Informáticos en Red (ASIR)**.
+Unlike standard versions of the puzzle, this implementation allows the user to:
 
-## Características Técnicas ⚙️
-- Implementado en Python 3
-- Tablero de ajedrez visualizado en consola
-- Validación de movimientos entre reinas
-- Interfaz de usuario simple
-- Código con colores para mejor visualización
+- Specify the **initial position** of one queen
+- Automatically compute a valid arrangement for the remaining seven
+- Visualize the board in an ANSI-colored console output
 
-## Requisitos 📋
-- Python 3.x instalado
-- Terminal que soporte colores ANSI
+The solver is lightweight, uses pure Python, and runs entirely in the terminal.
 
-## Uso 🖥️
-1. Ejecutar el script:
-   ```bash
-   python main.py
-   ```
-2. Introducir la posición inicial de la reina (ej. A1, H8, etc.)
-3. El programa mostrará la solución completa
+---
 
-### Ejemplo
+## ⚙️ Key Features
+
+- **User-defined starting position:** Place the first queen anywhere on the board (e.g., A1, H8).  
+- **Backtracking algorithm:** Automatically computes a valid arrangement for the remaining queens.  
+- **ANSI-colored console output:** Clear and easy-to-read board visualization.  
+- **Lightweight Python implementation:** No external libraries required.  
+- **Interactive input:** Simple, terminal-based interface for specifying positions.
+
+---
+
+## 💻 Installation & Usage
+
+### 📋 Requirements
+
+- **Python 3.x** (Version 3.6 or higher recommended)
+- Terminal that supports **ANSI colors**
+
+No additional libraries are needed.
+
+### 💻 Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/lukatinarelli/8-Queens-Backtracking.git
+cd 8-Queens-Backtracking
 ```
-Introduce la posición inicial de la reina (ejemplo: A1):
-Solución encontrada:
+
+2. (Optional) Make sure Python 3 is in your PATH.
+
+### 🚀 Usage
+
+Run the main script and follow the prompts:
+
+```bash
+python main.py
+```
+
+1. Enter the initial position of the first queen (e.g., A1, H8).
+
+2. The program will automatically compute a valid solution and display the board with colored output.
+
+### Example Output
+
+```console
+Enter the initial position of the first queen (e.g., A1):
+
+Solution found:
 
     A B C D E F G H
-  +-----------------+
+  +----------------+
 1 |♛ - - - - - - - |
 2 |- - - - - ♛ - - |
 3 |- - - - - - - ♛ |
@@ -65,32 +92,27 @@ Solución encontrada:
 6 |- - - - - - ♛ - |
 7 |- - ♛ - - - - - |
 8 |- - - - ♛ - - - |
-  +-----------------+
+  +----------------+
 ```
 
-## Estructura del Código 🧱
-```python
-# Tablero 9x9 (8x8 + bordes para coordenadas)
-tablero = [["-" for _ in range(9)] for _ in range(9)]  
+---
 
-# Función principal recursiva
-def colocar_reina(tablero, reinas):
-    # Lógica de backtracking...
+## 🔗 Useful Resources
 
-# Función secundaria
-def comprobar_reina(tablero, fila, columna, reinas):
-    # Comprobar si alguna reina del tablero le puede atacar
-```
+- [8 Queens Problem - Wikipedia](https://en.wikipedia.org/wiki/Eight_queens_puzzle)  
+- [Python 3 Documentation](https://docs.python.org/3/)  
+- [Backtracking Algorithm](https://www.geeksforgeeks.org/backtracking-algorithms/)
 
-## Recursos útiles 🔗
-- [Problema de las 8 reinas en Wikipedia](https://es.wikipedia.org/wiki/Problema_de_las_ocho_reinas)
-- [Documentación oficial de Python](https://docs.python.org/es/3/)
+---
 
-## Contribuir 🤝
-Las sugerencias y mejoras son bienvenidas. Si quieres aportar, puedes abrir un issue o enviar un pull request.
+## 📄 License
 
-## Autor ✍️
-Luka Ramon Tinarelli - Técnico de ASIR en prácticas, apasionado por la programación y la automatización.
+This project is licensed under the **[CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](LICENSE)**.  
 
-## Licencia 📄
-Este proyecto está bajo la licencia [CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](LICENSE).
+You can freely:
+
+- **Copy, modify, and distribute** the code  
+- **Use it for any purpose**, including commercial use  
+- **No attribution required** (although credit is appreciated)
+
+> This project is released into the public domain for educational and personal use.
