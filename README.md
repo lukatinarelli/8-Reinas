@@ -9,8 +9,9 @@
 
    <a href="https://docs.python.org/3/">
       <img src="https://img.shields.io/badge/Python-3.x-blue?style=for-the-badge&logo=python"></a>
-
-   <img src="https://img.shields.io/badge/Algorithm-Backtracking-orange?style=for-the-badge">
+   
+   <a href="https://en.wikipedia.org/wiki/Backtracking">
+      <img src="https://img.shields.io/badge/Algorithm-Backtracking-orange?style=for-the-badge"></a>
 
    <a href="https://github.com/lukatinarelli/8-Queens-Backtracking/blob/main/LICENSE">
       <img src="https://img.shields.io/badge/License-CC0-lightgrey?style=for-the-badge"></a>
