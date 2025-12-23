@@ -1,5 +1,5 @@
 <p align="center">
-   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Eight-queens-animation.gif/220px-Eight-queens-animation.gif" alt="8 queens animation"/>
+   <img src="Eight-queens-animation.gif" alt="8 queens animation"/>
 </p>
 
 <h1 align="center">♛ 8 Queens Solver — Backtracking Edition</h1>
